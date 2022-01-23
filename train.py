@@ -1,8 +1,8 @@
-import os
+from models.LeNet import LeNet
 
 
 def train():
-    print('train function')
+    model = LeNet(10)
 
 
 if __name__ == "__main__":
