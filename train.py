@@ -1,3 +1,5 @@
+from tqdm import tqdm
+
 from dataset import ClassficationDataset
 from models.LeNet import LeNet
 import torch
@@ -25,6 +27,30 @@ def train():
 
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.SGD(net.parameters(), lr=0.001)
+
+    for epoch in range(0, epochs):
+        running_loss = 0.0
+        s = 'epoch ' + str(epoch + 1) + '/' + str(epochs) + ':' \
+            ' ' % 48
+
+        pbar = enumerate(dataloader)
+        pbar = tqdm(pbar, total=len(dataloader), desc=s)
+        for i, (img, label) in pbar:
+            img = img.to(device)
+            label = label.to(device)
+
+            optimizer.zero_grad()
+            outputs = net(img)
+            loss = criterion(outputs, label)
+            loss.backward()
+            optimizer.step()
+            running_loss += loss.item()
+        print('loss:' + str(running_loss / len(dataloader)))
+        # test(net, dataloader_test, device)
+
+    print('Finished Training')
+    PATH = './cifar_net.pth'
+    torch.save(net.state_dict(), PATH)
 
 
 if __name__ == "__main__":
