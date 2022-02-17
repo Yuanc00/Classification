@@ -14,9 +14,11 @@ class Conv3x3(nn.Module):
 
 class Fused_MBConv(nn.Module):
     def __init__(self):
+        super(Fused_MBConv, self).__init__()
         pass
 
 
 class MBConv(nn.Module):
     def __int__(self):
+        super(MBConv, self).__int__()
         pass
