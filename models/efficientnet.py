@@ -17,8 +17,14 @@ class Fused_MBConv(nn.Module):
         super(Fused_MBConv, self).__init__()
         pass
 
+    def forwark(self, x):
+        pass
+
 
 class MBConv(nn.Module):
     def __int__(self):
         super(MBConv, self).__int__()
+        pass
+
+    def forwark(self, x):
         pass
