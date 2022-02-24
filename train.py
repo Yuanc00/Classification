@@ -59,5 +59,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--cfg', type=str, default='models/efficientnet.yaml', help='model.yaml path')
     parser.add_argument('--epochs', type=int, default=300)
+    parser.add_argument('--batch-size', type=int, default=64)
 
     train()
